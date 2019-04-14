@@ -1,7 +1,8 @@
 {
-  "name": "tng-expert-app",
+  "name": "white-noise-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nullmicgo.github.io/white-noise-app",
   "devDependencies": {},
   "dependencies": {
     "autoprefixer": "7.1.6",
@@ -28,6 +29,7 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
+    "gh-pages": "^2.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "object-assign": "4.1.1",
@@ -64,7 +66,8 @@
     "dev4": "node scripts/dev4.js",
     "prepro": "node scripts/prepro.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "deploy":"gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
