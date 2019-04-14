@@ -47,17 +47,17 @@ class Home extends Component {
   }
   componentDidMount() {
     //if already login, go to staff Menu
-    if(cookies.get('token')){
-      let path = `staffMenu/`+btoa(cookies.get('token'));
-      this.props.history.push(path);
-    }
+    // if(cookies.get('token')){
+    //   let path = `staffMenu/`+btoa(cookies.get('token'));
+    //   this.props.history.push(path);
+    // }
   }
 
 
   handleSubmit(event) {
     event.preventDefault();
     let self = this;
-    let path = `locationPermission/`;
+    let path = `locationPermission`;
     self.props.history.push(path);
 
   }

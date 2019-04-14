@@ -5,22 +5,31 @@ import {Animated} from "react-animated-css";
 import Cookies from 'universal-cookie';
 import Header from './Header';
 import {isMobile} from 'react-device-detect';
-const token = '';
+import TeacherList from '../data/teachers';
 
 
 
-
-const API_ENDPOINT = process.env.API_END_POINT;
-
-
-const cookies = new Cookies();
 
 class StaffMenu extends Component {   
   
   constructor(props, context) {
     super(props, context);
+  
+
+
+    let teachers = TeacherList.map((teacher) => {
+      return (
+        <li className="teacher" key={teacher.id} >
+          <img className="teacher-img" src={teacher.img_src} alt="teacher" />
+          <h3>{teacher.name}</h3>
+          <p>{teacher.bio}</p>
+        </li>
+      );
+    }); 
+
     this.state = {
       show: false,
+      teachers: teachers
     };
 
     this.handleShow = this.handleShow.bind(this);
@@ -34,39 +43,25 @@ class StaffMenu extends Component {
     this.setState({ show: true });
   }
 
-  doValidation = (e) =>{
-    e.preventDefault();
-    let path = `../validation`;
-    this.props.history.push(path);
-
-  }
-  doGiftAndLabel = (e) =>{
-    e.preventDefault();
-    let path = `../giftAndLabel`;
-    this.props.history.push(path);
-  }
-  doLogout = (e) =>{
-    e.preventDefault();
-    let path = `/`;
-    this.props.history.replace(path);
-
-
-
-
-
-  }
-
+  
   componentDidMount() {
-    //if not login, go back to Login Screen
-    if(!this.props.match.params){
-      //for handle 
-      const token =atob(this.props.match.params);
-      //add to homescreen in safrai will not work cookies
-      cookies.set('token', token);
-      cookies.remove('token');
-      let path = `/`;
-      this.props.history.replace(path);
-    }
+
+    // let self = this;
+
+    // setTimeout(() => {
+    //   if (window.confirm("請選擇以下其中一種度身訂造的Alpha波鬆弛音樂一經選擇就不能更改")){
+
+    //   }
+    //   else
+    //   {
+    //       let path = `/`;
+    //       this.props.history.replace(path);
+    //   }
+
+    // }, 1000);
+
+
+ 
   }
 
   renderPrintQRCode = () => {
@@ -102,17 +97,19 @@ class StaffMenu extends Component {
         <Header />
       <Animated animationIn="bounceInLeft" animationOut="bounceInLeft" isVisible={true}>
 
-      <div className="main-content home">
-        <h2>MENU</h2>
-        <br/>
 
-        {this.renderPrintQRCode()}
-        <button className="btn-gift" type="button" onClick={this.doGiftAndLabel}>Gift And Label</button>
-        <button className="btn-logout" type="button" onClick={this.doLogout}>Logout</button>
+      <div className="main-content">
+      <p>請選擇以下其中一種度身訂造的Alpha波鬆弛音樂一經選擇就不能更改</p>
+      <br/>
+      <br/>
       
-      
-      
-        <Modal show={this.state.show} onHide={this.handleClose}>
+      <ul className="group">
+        {this.state.teachers}    
+      </ul>
+    </div>
+
+
+    <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Body>
             {renderLoadingWordings}
           </Modal.Body>
@@ -120,10 +117,8 @@ class StaffMenu extends Component {
             <Button onClick={this.handleClose}>Close</Button>
           </Modal.Footer> */}
         </Modal>
-      
-      
-      
-      </div>
+
+
       </Animated>
       </div>
   </div>

@@ -15,9 +15,14 @@ body {
   color: #576366;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background: url('/wallpaper2.png') center center;
+  background: url('/wallpaper.jpg') center center;
 
 }
+
+.teacher{
+  padding-bottom: 60px;
+}
+
 
 
 .special-button {

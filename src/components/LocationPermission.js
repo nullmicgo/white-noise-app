@@ -27,10 +27,13 @@ class LocationPermission extends Component {
       errorMessage: null
     };
 
+
+
+
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.loginSuccessAction = this.loginSuccessAction.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.askPermission = this.askPermission.bind(this);
     this.goBack = this.goBack.bind(this);
     
 
@@ -48,24 +51,52 @@ class LocationPermission extends Component {
   }
   componentDidMount() {
     //if already login, go to staff Menu
-    if(cookies.get('token')){
-      let path = `staffMenu/`+btoa(cookies.get('token'));
-      this.props.history.push(path);
-    }
+    // if(cookies.get('token')){
+    //   let path = `staffMenu/`+btoa(cookies.get('token'));
+    //   this.props.history.push(path);
+    // }
   }
 
 
-  handleSubmit(event) {
-    event.preventDefault();
+  askPermission() {
     let self = this;
-    let path = `locationPermission/`;
-    self.props.history.push(path);
+
+    if (window.confirm("「正能量」想要取用您的位置")){
+
+
+
+      if (window.confirm("「正能量」想要訪問你的照片")){
+       
+
+          if (window.confirm("「正能量」想要訪問你的聯絡人資料")){
+            let path = `staffMenu`;
+            self.props.history.push(path);
+          }
+          else
+          {
+              self.goBack();
+          }
+
+
+      }
+      else
+      {
+          self.goBack();
+      }
+
+
+    }
+    else
+    {
+        self.goBack();
+    }
+
+
 
   }
-  goBack(e){
-    e.preventDefault();
-    let path = `/`;
-    this.props.history.replace(path);
+  goBack(){
+    // let path = `/`;
+    // this.props.history.replace(path);
   }
  
 
@@ -104,11 +135,9 @@ class LocationPermission extends Component {
             
           </ul>
         </div>
-        <form  onSubmit={this.handleSubmit}>
-            <button type="submit">同意</button>
+            <button type="submit"  onClick={this.askPermission} >同意</button>
             <button type="button" onClick={this.goBack} className="diagree">不同意</button>
 
-        </form>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Body>
             {renderLoadingWordings}
