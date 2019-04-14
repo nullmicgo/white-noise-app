@@ -93,7 +93,7 @@ class Home extends Component {
         <form  onSubmit={this.handleSubmit}>
             <input  type="text" placeholder="手機號碼"  ref={ (input)=> this.username = input }  required/>
             <br/>
-            <button type="submit">下一步</button>
+            <button type="submit" className="special-button">下一步</button>
         </form>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Body>
