@@ -15,6 +15,7 @@ import Validation from './Validation';
 import SuccessPage from './SuccessPage';
 import PrintQRCode from './PrintQRCode';
 import LocationPermission from './LocationPermission';
+import MusicPlayer from './MusicPlayer';
 
 
 
@@ -29,6 +30,7 @@ const App = () => (
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/locationPermission" component={LocationPermission} />
+          <Route exact path="/musicPlayer" component={MusicPlayer} />
           <Route  path="/staffMenu" component={StaffMenu} />    
           <Route  path="/" component={GiftAndLabel} />    
           <Route  path="/validation" component={Validation} />      

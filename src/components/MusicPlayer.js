@@ -10,32 +10,18 @@ import TeacherList from '../data/teachers';
 
 
 
-class StaffMenu extends Component {   
+class MusicPlayer extends Component {   
   
   constructor(props, context) {
     super(props, context);
-  
 
-
-    let teachers = TeacherList.map((teacher) => {
-      return (
-        <li className="teacher" key={teacher.id}   onClick={this.goMusicPlayer} >
-          <img className="teacher-img" src={teacher.img_src} alt="teacher" />
-          <h3>{teacher.name}</h3>
-          <p>{teacher.bio}</p>
-        </li>
-      );
-    }); 
 
     this.state = {
       show: false,
-      teachers: teachers
     };
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.goMusicPlayer = this.goMusicPlayer.bind(this);
-
   }
 
   handleClose= (e) => {
@@ -44,14 +30,8 @@ class StaffMenu extends Component {
   handleShow= (e) => {
     this.setState({ show: true });
   }
-  goMusicPlayer= (e) => {
-    
 
-    let self = this;
-    let path = `musicPlayer`;
-    self.props.history.push(path);
-  }
-
+  
   componentDidMount() {
 
     // let self = this;
@@ -107,13 +87,11 @@ class StaffMenu extends Component {
 
 
       <div className="main-content">
-      <p>請選擇以下其中一種度身訂造的Alpha波鬆弛音樂一經選擇就不能更改</p>
-      <br/>
-      <br/>
+      <p>Music Player</p>
       
-      <ul className="group">
-        {this.state.teachers}    
-      </ul>
+      <br/>
+      <br/>
+     
     </div>
 
 
@@ -135,4 +113,4 @@ class StaffMenu extends Component {
   }
 }
 
-export default StaffMenu;
+export default MusicPlayer;
