@@ -17,7 +17,8 @@ class MusicPlayer extends Component {
 
     this.state = {
       show: false,
-      page:0
+      page:0,
+      paid:false
     };
 
     this.handleShow = this.handleShow.bind(this);
@@ -38,7 +39,13 @@ class MusicPlayer extends Component {
   goToSlide= (e, targetValue) => {
    
       console.log("goToSlide  >>"+targetValue);
-      this.setState({ page: targetValue });
+      if(targetValue===4){
+        this.setState({ page: 0,paid:true });
+
+      }else{
+        this.setState({ page: targetValue });
+      }     
+
 
   }
 
@@ -115,17 +122,28 @@ class MusicPlayer extends Component {
 
     };
 
+    let content = "";
+    if(this.state.paid===true){
+      content = "鳥叫聲";
+
+    }else{
+      content = <img src="loading.png" onClick={(e) => this.goToSlide(e,1)} />;
+
+
+    }
+
+
 
     const loadingWithAnimation =   
-    <div style={loadingContainerStyle}>
+    <div style={loadingContainerStyle} hidden={this.state.page !== 0}>
     <div className="loadingIconInPlayer">
     <div className="request-loader">
-    <span><img src="loading.png" onClick={(e) => this.goToSlide(e,1)} /></span>
+    <span>{content}</span>
   </div>
 </div>
 </div>;
 
-    const overTenHours =   <div style={overTenHoursContainerStyle}>
+    const overTenHours =   <div style={overTenHoursContainerStyle} hidden={this.state.page !==  1}>
         閣下十小時免費使用的療癒時間已經結束, 請問是否需要付費繼續享用療癒時間?
         <br/> <br/> <br/> <br/> <br/>
         <button type="submit" className="payment-no-button ">否</button>
@@ -134,7 +152,7 @@ class MusicPlayer extends Component {
     </div>;
 
 
-    const paymentScreen =   <div style={overTenHoursContainerStyle}>
+    const paymentScreen =   <div style={overTenHoursContainerStyle} hidden={this.state.page !== 2}>
     <div className="payment-text">繼續享用療癒時間每分鐘只需US$1.00</div>
     <br/> <br/> <br/> <br/> <br/>
     <img src="visa.png" className="payment-image"></img>
@@ -143,7 +161,7 @@ class MusicPlayer extends Component {
     </div>;
 
 
-const inputGreatSaying =   <div style={overTenHoursContainerStyle}>
+const inputGreatSaying =   <div style={overTenHoursContainerStyle} hidden={this.state.page !== 3}>
 <div className="payment-text">請輸入勵志金句後繼續播放</div>
 <br/> <br/> 
 <input type="text" className="payment-input" ></input>
@@ -155,26 +173,26 @@ const inputGreatSaying =   <div style={overTenHoursContainerStyle}>
 
 
 const birdSinging =   
-<div style={loadingContainerStyle}>
+<div style={loadingContainerStyle} show={this.state.page !== 4}>
 <div className="loadingIconInPlayer">
-<div className="request-loader">
+<div className="">
 <span>鳥叫聲</span>
 </div>
 </div>
 </div>;
 
-    let finalShowingContent= "";
-    if(this.state.page === 0 ){
-      finalShowingContent = loadingWithAnimation;
-    }else if(this.state.page === 1 ){
-      finalShowingContent = overTenHours;
-    }else if(this.state.page === 2 ){
-      finalShowingContent = paymentScreen;
-    }else if(this.state.page === 3 ){
-      finalShowingContent = inputGreatSaying;
-    }else if(this.state.page === 4 ){
-      finalShowingContent = birdSinging;
-    }
+    // let finalShowingContent= "";
+    // if(this.state.page === 0 ){
+    //   finalShowingContent = loadingWithAnimation;
+    // }else if(this.state.page === 1 ){
+    //   finalShowingContent = overTenHours;
+    // }else if(this.state.page === 2 ){
+    //   finalShowingContent = paymentScreen;
+    // }else if(this.state.page === 3 ){
+    //   finalShowingContent = inputGreatSaying;
+    // }else if(this.state.page === 4 ){
+    //   finalShowingContent = birdSinging;
+    // }
 
     return (
 
@@ -184,7 +202,10 @@ const birdSinging =
       <main >
 
 
-          {finalShowingContent}
+          {loadingWithAnimation}
+          {overTenHours}
+          {paymentScreen}
+          {inputGreatSaying}
         
 
 
