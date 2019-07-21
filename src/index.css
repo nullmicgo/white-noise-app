@@ -409,8 +409,46 @@ button {
 
 
 
+    .payment-no-button {
+      display: inline-block;
+      width: 42%;
+      margin-bottom: 1em;
+      background:red;
+      border-radius: 20px;
+      float: right;
+    }
+    
+    .payment-yes-button {
+      display: inline-block;
+      width: 42%;
+      margin-bottom: 1em;
+      background:rgb(55, 202, 18);
+      border-radius: 20px;
+      float: left;
+
+    }
+
+
+    .payment-confirm-button {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 1em;
+      background:white;
+      border-radius: 20px;
+      color:black;
+
+    }
+
     
 
+.payment-image{
+  width:100%;
+}
 
+    .payment-text{
+      text-align: center;
+    }
 
-    
+    .payment-input{
+      border-radius: 20px;
+    }
