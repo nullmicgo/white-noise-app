@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import QrReader from 'react-qr-reader'
-import { Label,Popover,Tooltip,Modal,Button,OverlayTrigger,Grid,Row,Col, Table } from 'react-bootstrap';
+import { Popover,Tooltip,Modal,Button,OverlayTrigger,Grid,Row,Col, Table } from 'react-bootstrap';
 import {Animated} from "react-animated-css";
 import Cookies from 'universal-cookie';
 import Header from './Header';
@@ -265,13 +265,7 @@ class Validation extends Component {
 
 
     let labelAssignedDate;
-    if (this.state.existingLabelAssignDatetime) {
-      labelAssignedDate = <Label bsStyle="danger">{this.state.existingLabelAssignDatetime}</Label>;
-    }else{
-      labelAssignedDate = <Label bsStyle="success">Not yet</Label>;
-
-
-    }
+  
 
 
 
@@ -329,7 +323,6 @@ class Validation extends Component {
           <tbody>
           <tr>
               <td>Level</td>
-              <td><Label bsStyle="primary">{this.state.membershipLevel}</Label></td>
             </tr>
             <tr>
               <td>Label</td>

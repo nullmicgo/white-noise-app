@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Glyphicon,Popover,Tooltip,Modal,Button,OverlayTrigger } from 'react-bootstrap';
+import { Popover,Tooltip,Modal,Button,OverlayTrigger } from 'react-bootstrap';
 import {Animated} from "react-animated-css";
 import Cookies from 'universal-cookie';
 import Header from './Header';
@@ -48,7 +48,7 @@ class SuccessPage extends Component {
       <div className="main-content home">
       <Animated  animationIn="rubberBand" animationOut="fadeOut" isVisible={true}>
 
-    <h2 className="text-center " style={successContainer} >Success <Glyphicon glyph="glyphicon glyphicon-ok" /> </h2>
+    <h2 className="text-center " style={successContainer} >Success  </h2>
     </Animated>
 
 

@@ -5,8 +5,7 @@ import {Animated} from "react-animated-css";
 import Cookies from 'universal-cookie';
 import Header from './Header';
 import {isMobile} from 'react-device-detect';
-import TeacherList from '../data/teachers';
-
+import "./MusicPlayer.scss";
 
 
 
@@ -78,36 +77,40 @@ class MusicPlayer extends Component {
     }
 
 
+    const containerStyle ={
+      position:'fixed',
+      width: '100%',
+      height: '120%',
+      backgroundColor: 'red',
+      top:'-5px',
+      backgroundImage: `url(/images/player.png)`,
+      backgroundSize: 'cover'
+
+    };
 
     return (
-      <div className="main-container">
-      <div className="counter">
-        <Header />
-      <Animated animationIn="bounceInLeft" animationOut="bounceInLeft" isVisible={true}>
 
 
-      <div className="main-content">
-      <p>Music Player</p>
-      
-      <br/>
-      <br/>
-     
-    </div>
 
 
-    <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Body>
-            {renderLoadingWordings}
-          </Modal.Body>
-          {/* <Modal.Footer>
-            <Button onClick={this.handleClose}>Close</Button>
-          </Modal.Footer> */}
-        </Modal>
+      <main style={containerStyle}>
 
 
-      </Animated>
-      </div>
-  </div>
+
+          <div className="loadingIconInPlayer">
+
+          <div class="request-loader">
+          <span>👋</span>
+        </div>
+
+
+          </div>
+
+
+      </main>
+
+            
+   
 
     );
   }
