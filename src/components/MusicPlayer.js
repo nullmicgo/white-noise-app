@@ -100,7 +100,7 @@ class MusicPlayer extends Component {
           <div className="loadingIconInPlayer">
 
           <div class="request-loader">
-          <span>👋</span>
+          <span><img src="loading.png" /></span>
         </div>
 
 
